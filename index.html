@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="conteudo">
-        <p>
-            <label for="nova-tarefa">Adicionar Tarefa</label>
-            <input id="nova-tarefa" type="text">
-            <button id="botao-adicionar">Adicionar</button>
-        </p>
+        <div class="tasks-container">
+            <label class="label-title" for="nova-tarefa">ADICIONAR TAREFA</label>
+            <hr />
+            <input class="" id="nova-tarefa" type="text" />
+            <button id="add-button">Adicionar</button>
+        </div>
 
-        <h3>Tarefas</h3>
-        <ul id="incompletas">
-            <li>
-                <input type="checkbox">
-                <label>Pagar as contas</label>
-                <button class="apagar">Apagar</button>
-            </li>
-            <li>
-                <input type="checkbox">
-                <label>Fazer as compras</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
+        <div class="tasks-container">
+            <label class="label-title">TAREFAS</label>
+            <hr />
+            <ul>
+                <li>
+                    <label class="task-label">
+                        <input type="checkbox" />
+                        Pagar as contas</label>
+                    <button class="delete-button">Apagar</button>
+                </li>
+                <li>
+                    <label class="task-label">
+                        <input type="checkbox" />
+                        Fazer as compras</label>
+                    <button class="delete-button">Apagar</button>
+                </li>
+            </ul>
+        </div>
 
-        <h3>Completas</h3>
-        <ul id="completas">
-            <li>
-                <input type="checkbox" checked="">
-                <label>Lavar a louça</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
+        <div class="tasks-container">
+            <label class="label-title">COMPLETAS</label>
+            <hr />
+            <ul>
+                <li>
+                    <label class="task-label">
+                        <input checked type="checkbox" />
+                        Lavar a louça
+                    </label>
+                    <button class="delete-button">Apagar</button>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
 </body>
+
 </html>
