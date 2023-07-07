@@ -8,15 +8,35 @@
 <body>
     <div class="conteudo">
         <p>
-            <label for="nova-tarefa">Adicionar tarefa</label>
-            <input id="nova-tarefa" type="text"/>
+            <label for="nova-tarefa">Adicionar Tarefa</label>
+            <input id="nova-tarefa" type="text">
             <button id="botao-adicionar">Adicionar</button>
         </p>
 
+        <h3>Tarefas</h3>
+        <ul id="incompletas">
+            <li>
+                <input type="checkbox">
+                <label>Pagar as contas</label>
+                <button class="apagar">Apagar</button>
+            </li>
+            <li>
+                <input type="checkbox">
+                <label>Fazer as compras</label>
+                <button class="apagar">Apagar</button>
+            </li>
+        </ul>
 
-
-
-
+        <h3>Completas</h3>
+        <ul id="completas">
+            <li>
+                <input type="checkbox" checked="">
+                <label>Lavar a louça</label>
+                <button class="apagar">Apagar</button>
+            </li>
+        </ul>
     </div>
+
+
 </body>
 </html>
