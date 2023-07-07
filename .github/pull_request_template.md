@@ -3,8 +3,10 @@ Link da tarefa
 
 ---------------
 
-### Causa raiz
+### Imagem da alteração
 
+
+### Causa raiz
 
 
 ### Estratégia para ajuste
