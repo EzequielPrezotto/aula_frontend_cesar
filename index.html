@@ -1,22 +1,46 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <div class="conteudo">
-        <p>
-            <label for="nova-tarefa">Adicionar tarefa</label>
+        <section>
+            <label class="section-label" for="nova-tarefa">ADICIONAR TAREFA</label>        
             <input id="nova-tarefa" type="text"/>
             <button id="botao-adicionar">Adicionar</button>
-        </p>
-
-
-
-
-
+        </section>
+        <section>
+            <label class="section-label">TAREFAS</label>
+            <div class="checkbox-item"> 
+                <div>
+                    <input id="pagar-contas" type="checkbox" name="pagar as contas"/>
+                    <label for="pagar-contas">Pagar as contas</label>
+                </div>
+                <button id="apagar-pagar-contas">Apagar</button>
+            </div>   
+            <div class="checkbox-item"> 
+                <div>
+                    <input id="fazer-contas" type="checkbox" name="fazer as contas"/>
+                    <label for="fazer-contas">Fazer as compras</label>
+                </div>
+                <button id="apagar-fazer-contas">Apagar</button>
+            </div>   
+        </section>
+        <section>
+            <label class="section-label">COMPLETAS</label>
+            <div class="checkbox-item"> 
+                <div>
+                    <input id="lavar-louca" type="checkbox" name="lavar a louca"/>
+                    <label for="lavar-louca">Lavar a louça</label>
+                </div>
+                <button id="apagar-lavar-louca">Apagar</button>
+            </div>  
+        </section>
     </div>
+
 </body>
 </html>

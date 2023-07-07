@@ -3,16 +3,44 @@
     width: 400px;
 }
 
+section {
+    margin-bottom: 20px;
+}
+
 input[type="text"] {
-    margin: 0;
+    margin: 16px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
-    height: 18px;
+    height: 32px;
+    width: 320px;
+}
+
+input[type="checkbox"] {
+    margin-right: 16px;
+}
+
+.section-label {
+    display: block;
+    padding-bottom: 8px;
+    font-weight: 700;
+    border-bottom: 2px solid black;
 }
 
 button {
-    cursor: pointer;
-    color: #7f7f7f;
-    border: 0;
+    border: none;
     background: none;
+    color: #7f7f7f;
+    cursor: pointer;
+}
+
+.checkbox-item {
+    padding: 24px 40px 24px 12px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkbox-item div {
+    display: flex;    
 }
