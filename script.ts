@@ -1,8 +1,8 @@
-let novaTarefaInput = document.getElementById('nova-tarefa');
+let novaTarefaInput = document.getElementById('nova-tarefa') as HTMLInputElement;
 let botaoAdicionar = document.getElementById('botao-adicionar');
 let listaTarefasIncompletas = document.getElementById('incompletas');
 
-let criarTarefa = function (descricaoTarefa) {
+let criarTarefa = function (descricaoTarefa: string) {
     // <li>
     //     <input type="checkbox">
     //     <label>Pagar as contas</label>
@@ -29,7 +29,7 @@ let criarTarefa = function (descricaoTarefa) {
     return tarefa
 }
 
-function validaTextoTarefa(texto) {
+function validaTextoTarefa(texto: string) {
     return texto.length > 0;
 }
 
