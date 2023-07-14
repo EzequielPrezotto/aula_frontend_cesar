@@ -4,11 +4,13 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "atualiza": "npx tsc && browserify dist/src/app.js -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^17.0.0",
     "typescript": "^5.1.6"
   }
 }

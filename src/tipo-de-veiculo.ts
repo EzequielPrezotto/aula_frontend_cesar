@@ -1,0 +1,3 @@
+class TipoDeVeiculo {
+    descricao: string;
+}
