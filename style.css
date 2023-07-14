@@ -22,6 +22,18 @@ button {
     cursor: pointer;
 }
 
+.apagar:hover {
+    color: red;
+}
+
+.editar:hover {
+    color: orange;
+}
+
+#botao-adicionar:hover {
+    color: green;
+}
+
 h3,
 label[for='nova-tarefa'] {
     color: #333;
