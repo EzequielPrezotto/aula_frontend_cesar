@@ -4,10 +4,11 @@ import "./style.css";
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-import { type ListItem } from "./list-item";
+import { getListData, setListData, type ListItem } from "./list-item";
+import { getLocalStorageItem } from "./local-storage";
 
 export function App() {
-  const [data, setData] = useState<ListItem[]>([]);
+  const [data, setData] = useState<ListItem[]>(getListData("react"));
   const [newContent, setNewContent] = useState("");
 
   const handleSubmit = () => {
@@ -23,7 +24,13 @@ export function App() {
       content: newContent,
     };
 
-    setData((oldData) => [...oldData, newItem]);
+    setData((oldData) => {
+      const newData = [...oldData, newItem];
+
+      setListData("react", newData);
+
+      return newData;
+    });
 
     setNewContent("");
   };
