@@ -18,7 +18,7 @@ button {
     color: #888;
     font-size: 15px;
     width: 60px;
-    margin: 10px 0 0;
+    margin: 5px 0 0;
     cursor: pointer;
 }
 
@@ -77,7 +77,7 @@ li >  input[type="text"] {
     width: 226px;
 }
 
-#completed-tasks label {
+#completas label {
     text-decoration: line-through;
     color: #888;
 }
