@@ -10,14 +10,14 @@
         <label for="new-task">Adicionar tarefa</label>
         <hr />
         <input type="text" id="new-task" placeholder="ex.: Fazer um churrasco" onkeyup="handleEvent(event)">
-        <button id="add-task" onclick="addTask()" class="mb-5 add-task">Adicionar</button>
-        <div id="todo-list-container">
+        <button id="add-task" onclick="addTask()" class="add-task">Adicionar</button>
+        <div id="todo-list-container" class="mt-5">
             <label for="todo-list">Tarefas a serem feitas</label>
             <hr />
             <table id="todo-list">
             </table>
         </div>
-        <div id="completed-list-container">
+        <div id="completed-list-container" class="mt-5">
             <label for="completed-list">Tarefas finalizadas</label>
             <hr />
             <table id="completed-list">

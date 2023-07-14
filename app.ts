@@ -19,9 +19,26 @@ const addTask = () => {
 }
 
 const handleEvent = (event: KeyboardEvent) => {
-    if (event.key.toLowerCase() === 'enter') {
+    if (event.key.toLowerCase() === "enter") {
         addTask();
     }
+}
+
+const editTask = (task: number, flag: TaskStatus) => {
+    const newName = window.prompt("Digite o novo nome da sua tarefa:");
+
+    if (newName === "") {
+        window.alert("O novo nome não pode ser vazio!");
+    } else {
+        if (!newName) return;
+
+        flag === TaskStatus.TODO
+        ? todoList[task] = newName
+        : completedList[task] = newName;
+    }
+
+    refreshTodoList();
+    refreshCompletedList();
 }
 
 const deleteTask = (task: number, flag: number) => {
@@ -71,6 +88,7 @@ const refreshTodoList = () => {
         <span>${item}</span>
     </div>
     <div>
+        <button class="edit-task" onclick="editTask(${index}, ${TaskStatus.TODO})">Editar</button>
         <button id="delete-todo-${index}" class="delete-task" onclick="deleteTask(${index}, ${TaskStatus.TODO})">Apagar</button>
     </div>
 </div>
@@ -102,8 +120,9 @@ const refreshCompletedList = () => {
     <div>
         <input id="completed-check-${index}" type="checkbox" checked onchange="uncheckTask(${index})">
         <span class="completed-task">${item}</span>
-    </div>
+        </div>
     <div>
+        <button class="edit-task" onclick="editTask(${index}, ${TaskStatus.COMPLETED})">Editar</button>
         <button id="delete-completed-${index}" class="delete-task" onclick="deleteTask(${index}, ${TaskStatus.COMPLETED})">Apagar</button>
     </div>
 </div>

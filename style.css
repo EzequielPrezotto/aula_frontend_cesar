@@ -26,6 +26,10 @@ button {
     background-color: orangered;
 }
 
+.edit-task:hover {
+    background-color: gold;
+}
+
 input[type="text"] {
     line-height: 1.2rem;
     outline: 0;
@@ -53,6 +57,10 @@ input[type="text"] {
 
 .mb-5 {
     margin-bottom: 20px;
+}
+
+.mt-5 {
+    margin-top: 20px;
 }
 
 .w-3\/4 {
