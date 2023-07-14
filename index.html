@@ -9,16 +9,20 @@
     <div class="container mx-auto pt-5">
         <label for="new-task">Adicionar tarefa</label>
         <hr />
-        <input type="text" id="new-task" placeholder="ex.: Fazer um churrasco">
+        <input type="text" id="new-task" placeholder="ex.: Fazer um churrasco" onkeyup="handleEvent(event)">
         <button id="add-task" onclick="addTask()" class="mb-5 add-task">Adicionar</button>
-        <label for="todo-list">Tarefas a serem feitas</label>
-        <hr />
-        <table id="todo-list">
-        </table>
-        <label for="completed-list">Tarefas finalizadas</label>
-        <hr />
-        <table id="completed-list">
-        </table>
+        <div id="todo-list-container">
+            <label for="todo-list">Tarefas a serem feitas</label>
+            <hr />
+            <table id="todo-list">
+            </table>
+        </div>
+        <div id="completed-list-container">
+            <label for="completed-list">Tarefas finalizadas</label>
+            <hr />
+            <table id="completed-list">
+            </table>
+        </div>
     </div>
 </body>
 </html>

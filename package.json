@@ -1,0 +1,14 @@
+{
+  "name": "aula_frontend_cesar",
+  "version": "1.0.0",
+  "description": "aula de frontend",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "João Abrantes",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}

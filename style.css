@@ -70,3 +70,7 @@ input[type="text"] {
 .w-100 {
     width: 100%;
 }
+
+.completed-task {
+    text-decoration: line-through;
+}
