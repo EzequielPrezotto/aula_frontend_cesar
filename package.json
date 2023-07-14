@@ -4,6 +4,7 @@
   "description": "aula de frontend",
   "main": "app.ts",
   "scripts": {
+    "compile": "npx tsc app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "João Abrantes",
