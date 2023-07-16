@@ -40,23 +40,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-div.divider {
-  border-bottom: 2px solid;
-}
-
-/*
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  gap: 0.5rem;
-}
-
-
-.list-item:not(:last-of-type) {
-  border-bottom: 1px solid gray;
-}
-*/
