@@ -34,7 +34,12 @@ export function App() {
   };
 
   const handleDelete = (id: number) => {
-    setData((oldData) => oldData.filter((item) => item.id != id));
+    setData((oldData) => {
+      const newData = oldData.filter((item) => item.id != id);
+
+      setListData(newData);
+      return newData;
+    });
   };
 
   const handleCompletedChange = (id: number, completed: boolean) => {
