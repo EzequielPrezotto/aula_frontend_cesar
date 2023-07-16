@@ -1,5 +1,5 @@
-export function getLocalStorageItem(key: string): unknown | null {
-  if (typeof window === undefined || key.length === 0) {
+export function getLocalStorageItem(key: string): unknown {
+  if (key.length === 0) {
     return null;
   }
 
@@ -13,7 +13,7 @@ export function getLocalStorageItem(key: string): unknown | null {
 }
 
 export function setLocalStorageItem<T extends object>(key: string, value: T) {
-  if (typeof window === undefined || key.length === 0) {
+  if (key.length === 0) {
     return;
   }
 

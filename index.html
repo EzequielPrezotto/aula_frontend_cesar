@@ -1,43 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Todo list</title>
-</head>
+  <body>
+    <div id="root"></div>
 
-<body>
-  <main class="container">
-    <section class="section-container">
-      <h3 class="title">Add task</h3>
-
-      <div class="add-task-container">
-        <input type="text" id="new-task" />
-        <button class="btn btn-add" id="submit-button">Add</button>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <h3 class="title">Tasks</h3>
-
-      <ul class="list-container" id="todo-list"></ul>
-    </section>
-
-    <section class="section-container">
-      <h3 class="title">Completed</h3>
-
-      <ul class="list-container" id="completed-list"></ul>
-    </section>
-  </main>
-
-  <div class="divider"></div>
-
-  <div id="react-root"></div>
-
-  <script type="module" src="/src/main-vanilla.ts"></script>
-  <script type="module" src="/src/main-react.tsx"></script>
-</body>
-
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
