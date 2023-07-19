@@ -4,7 +4,8 @@ import { Button } from "./components/button";
 import { ListItem } from "./components/list-item";
 import { TextInput } from "./components/text-input";
 import { loadListData, saveListData } from "./storage/list-data";
-import { type TodoItemEditType, type TodoItem } from "./types/todo-item";
+
+import type { TodoItemEditType, TodoItem } from "./types/todo-item";
 
 export function App() {
   const [data, setData] = useState<TodoItem[]>(() => loadListData());

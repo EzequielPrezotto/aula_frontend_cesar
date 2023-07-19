@@ -1,10 +1,12 @@
 import { z } from "zod";
 
-import { todoItemSchema, type TodoItem } from "../types/todo-item";
+import { todoItemSchema } from "../types/todo-item";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../utils/local-storage";
+
+import type { TodoItem } from "../types/todo-item";
 
 export function loadListData(): TodoItem[] {
   const data = getLocalStorageItem("list-data");

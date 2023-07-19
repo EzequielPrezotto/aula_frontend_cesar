@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { TodoItemEditType, type TodoItem } from "../types/todo-item";
-
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 import { EditableTextInput } from "./editable-text-input";
+
+import type { TodoItemEditType, TodoItem } from "../types/todo-item";
 
 interface Props {
   item: TodoItem;
