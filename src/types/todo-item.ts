@@ -7,3 +7,5 @@ export const todoItemSchema = z.object({
 });
 
 export type TodoItem = z.infer<typeof todoItemSchema>;
+
+export type TodoItemEditType = Partial<Omit<TodoItem, "id">>;

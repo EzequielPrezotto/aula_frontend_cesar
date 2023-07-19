@@ -3,15 +3,15 @@ import { useState } from "react";
 import { Button } from "./components/button";
 import { ListItem } from "./components/list-item";
 import { TextInput } from "./components/text-input";
-import { getListData, setListData } from "./storage/list-data";
-import { type TodoItem } from "./types/todo-item";
+import { loadListData, saveListData } from "./storage/list-data";
+import { type TodoItemEditType, type TodoItem } from "./types/todo-item";
 
 export function App() {
-  const [data, setData] = useState<TodoItem[]>(() => getListData());
+  const [data, setData] = useState<TodoItem[]>(() => loadListData());
   const [newContent, setNewContent] = useState("");
 
   const handleSubmit = () => {
-    if (newContent === "") {
+    if (newContent.trim() === "") {
       return;
     }
 
@@ -20,13 +20,13 @@ export function App() {
     const newItem = {
       id,
       completed: false,
-      content: newContent,
+      content: newContent.trim(),
     };
 
     setData((oldData) => {
       const newData = [...oldData, newItem];
 
-      setListData(newData);
+      saveListData(newData);
       return newData;
     });
 
@@ -37,18 +37,18 @@ export function App() {
     setData((oldData) => {
       const newData = oldData.filter((item) => item.id != id);
 
-      setListData(newData);
+      saveListData(newData);
       return newData;
     });
   };
 
-  const handleCompletedChange = (id: number, completed: boolean) => {
+  const handleEdit = (id: number, newValues: TodoItemEditType) => {
     setData((oldData) => {
       const newData = oldData.map((item) =>
-        item.id === id ? { ...item, completed } : item,
+        item.id === id ? { ...item, ...newValues } : item,
       );
 
-      setListData(newData);
+      saveListData(newData);
       return newData;
     });
   };
@@ -59,8 +59,8 @@ export function App() {
       <ListItem
         key={item.id}
         item={item}
-        handleCompletedChange={handleCompletedChange}
-        handleDelete={handleDelete}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
     ));
 
@@ -70,8 +70,8 @@ export function App() {
       <ListItem
         key={item.id}
         item={item}
-        handleCompletedChange={handleCompletedChange}
-        handleDelete={handleDelete}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
     ));
 
@@ -87,7 +87,11 @@ export function App() {
             onChange={setNewContent}
           />
 
-          <Button className="bg-blue-800" onClick={handleSubmit}>
+          <Button
+            className="bg-blue-800"
+            disabled={newContent.trim().length === 0}
+            onClick={handleSubmit}
+          >
             Add
           </Button>
         </div>

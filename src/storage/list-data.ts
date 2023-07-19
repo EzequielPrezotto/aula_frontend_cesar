@@ -6,7 +6,7 @@ import {
   setLocalStorageItem,
 } from "../utils/local-storage";
 
-export function getListData(): TodoItem[] {
+export function loadListData(): TodoItem[] {
   const data = getLocalStorageItem("list-data");
 
   const result = z.array(todoItemSchema).safeParse(data);
@@ -19,6 +19,6 @@ export function getListData(): TodoItem[] {
   return result.data;
 }
 
-export function setListData(data: TodoItem[]) {
+export function saveListData(data: TodoItem[]) {
   setLocalStorageItem("list-data", data);
 }
