@@ -1,4 +1,4 @@
-import { TextInput } from "./text-input";
+import { TextInput } from "@/components/text-input";
 
 interface Props {
   value: string;

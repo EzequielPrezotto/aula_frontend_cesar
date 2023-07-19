@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-import { Button } from "./button";
-import { Checkbox } from "./checkbox";
-import { EditableTextInput } from "./editable-text-input";
+import { Button } from "@/components/button";
+import { Checkbox } from "@/components/checkbox";
+import { EditableTextInput } from "@/components/editable-text-input";
+import { classnames } from "@/utils/classnames";
 
-import type { TodoItemEditType, TodoItem } from "../types/todo-item";
+import type { TodoItemEditType, TodoItem } from "@/types/todo-item";
 
 interface Props {
   item: TodoItem;
@@ -53,14 +54,14 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
       />
 
       <Button
-        className="ml-auto bg-red-600"
+        className={classnames("ml-auto bg-red-600")}
         onClick={isEditing ? handleCancelEditing : handleStartEditing}
       >
         {isEditing ? "Cancel" : "Edit"}
       </Button>
 
       <Button
-        className={isEditing ? "bg-green-600" : "bg-red-600"}
+        className={classnames(isEditing ? "bg-green-600" : "bg-red-600")}
         onClick={isEditing ? handleSave : handleDelete}
         disabled={isEditing && newContent.trim().length === 0}
       >
