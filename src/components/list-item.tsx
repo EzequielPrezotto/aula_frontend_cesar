@@ -27,7 +27,7 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
   };
 
   const handleSave = () => {
-    if (newContent.trim().length === 0) {
+    if (newContent.trim() === "") {
       return;
     }
 
@@ -63,7 +63,7 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
       <Button
         className={classnames(isEditing ? "bg-green-600" : "bg-red-600")}
         onClick={isEditing ? handleSave : handleDelete}
-        disabled={isEditing && newContent.trim().length === 0}
+        disabled={isEditing && newContent.trim() === ""}
       >
         {isEditing ? "Save" : "Delete"}
       </Button>
