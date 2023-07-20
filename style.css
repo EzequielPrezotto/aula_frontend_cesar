@@ -82,3 +82,10 @@ li >  input[type="text"] {
     color: #888;
 }
 
+.apagar:hover {
+    color: red;
+}
+
+#botao-adicionar:hover {
+    color: green;
+}
