@@ -1,3 +1,4 @@
+;
 let novaTarefaInput = document.getElementById('nova-tarefa');
 let botaoAdicionar = document.getElementById('botao-adicionar');
 let botoesEditar = document.getElementsByClassName('editar');
@@ -5,40 +6,60 @@ let botoesApagar = document.getElementsByClassName('apagar');
 let listaTarefasIncompletas = document.getElementById('incompletas');
 let listaTarefasCompletas = document.getElementById('completas');
 let todosInput = document.getElementsByTagName('input');
-let criarTarefa = function (descricaoTarefa) {
-    let tarefa = document.createElement("li");
+let listaTarefas = JSON.parse(localStorage.getItem("listaTarefas") || "[]");
+const nome = 'nome';
+let criarTarefa = function (tarefa) {
+    if (!listaTarefas.some(t => t.id === tarefa.id)) {
+        listaTarefas.push(tarefa);
+        localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas));
+    }
+    let tarefaWrapper = document.createElement("li");
     let checkbox = document.createElement("input");
     let label = document.createElement("label");
     let botaoEditar = document.createElement("button");
     let botaoApagar = document.createElement("button");
+    tarefaWrapper.id = `${tarefa.id}`;
     checkbox.type = 'checkbox';
     botaoApagar.className = 'apagar';
     botaoEditar.innerText = 'Editar';
     botaoEditar.className = 'editar';
     botaoApagar.innerText = 'Apagar';
-    label.innerText = descricaoTarefa;
-    tarefa.appendChild(checkbox);
-    tarefa.appendChild(label);
-    tarefa.appendChild(botaoEditar);
-    tarefa.appendChild(botaoApagar);
-    return tarefa;
+    label.innerText = tarefa.descricao;
+    if (tarefa.status) {
+        checkbox.checked = true;
+    }
+    ;
+    tarefaWrapper.appendChild(checkbox);
+    tarefaWrapper.appendChild(label);
+    tarefaWrapper.appendChild(botaoEditar);
+    tarefaWrapper.appendChild(botaoApagar);
+    return tarefaWrapper;
 };
 function validateTextoTarefa(texto) {
     return texto.length > 0;
 }
 let adicionaTarefa = function () {
+    const proximoId = listaTarefas.length ? Math.max.apply(null, listaTarefas.map(t => t.id)) : 0;
     if (validateTextoTarefa(novaTarefaInput.value)) {
-        let tarefa = criarTarefa(novaTarefaInput.value);
-        listaTarefasIncompletas?.appendChild(tarefa);
+        const tarefa = {
+            id: proximoId + 1,
+            descricao: novaTarefaInput.value,
+            status: false
+        };
+        let tarefaElement = criarTarefa(tarefa);
+        listaTarefasIncompletas?.appendChild(tarefaElement);
         apagarTarefa();
         mudarStatusTarefa();
         editarTarefa();
+        novaTarefaInput.value = "";
     }
 };
 let apagarTarefa = function () {
     for (const botaoApagar of botoesApagar) {
         botaoApagar.addEventListener('click', (event) => {
             let parent = event.target.parentElement;
+            listaTarefas = listaTarefas.filter(t => t.id !== +parent.id);
+            localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas));
             parent.remove();
         });
     }
@@ -85,7 +106,18 @@ let mudarStatusTarefa = function () {
     }
     ;
 };
-apagarTarefa();
-editarTarefa();
-mudarStatusTarefa();
+if (listaTarefas.length) {
+    for (const tarefa of listaTarefas) {
+        let tarefaElement = criarTarefa(tarefa);
+        if (tarefa.status) {
+            listaTarefasCompletas?.appendChild(tarefaElement);
+        }
+        else {
+            listaTarefasIncompletas?.appendChild(tarefaElement);
+        }
+    }
+    apagarTarefa();
+    editarTarefa();
+    mudarStatusTarefa();
+}
 botaoAdicionar?.addEventListener('click', adicionaTarefa);
