@@ -5,6 +5,8 @@ import { Checkbox } from "@/components/checkbox";
 import { EditableTextInput } from "@/components/editable-text-input";
 import { classnames } from "@/utils/classnames";
 
+import { RxCross2, RxPencil2, RxTrash, RxCheck } from "react-icons/rx";
+
 import type { TodoItemEditType, TodoItem } from "@/types/todo-item";
 
 interface Props {
@@ -53,20 +55,37 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
         isEditing={isEditing}
       />
 
-      <Button
-        className={classnames("ml-auto bg-red-600")}
-        onClick={isEditing ? handleCancelEditing : handleStartEditing}
-      >
-        {isEditing ? "Cancel" : "Edit"}
-      </Button>
+      {isEditing ? (
+        <>
+          <Button
+            className={classnames("ml-auto bg-red-600")}
+            onClick={handleCancelEditing}
+          >
+            <RxCross2 />
+          </Button>
 
-      <Button
-        className={classnames(isEditing ? "bg-green-600" : "bg-red-600")}
-        onClick={isEditing ? handleSave : handleDelete}
-        disabled={isEditing && newContent.trim() === ""}
-      >
-        {isEditing ? "Save" : "Delete"}
-      </Button>
+          <Button
+            className={classnames("bg-green-600")}
+            onClick={handleSave}
+            disabled={isEditing && newContent.trim() === ""}
+          >
+            <RxCheck />
+          </Button>
+        </>
+      ) : (
+        <>
+          <Button
+            className={classnames("ml-auto bg-indigo-600")}
+            onClick={handleStartEditing}
+          >
+            <RxPencil2 />
+          </Button>
+
+          <Button className={classnames("bg-red-600")} onClick={handleDelete}>
+            <RxTrash />
+          </Button>
+        </>
+      )}
     </li>
   );
 }
