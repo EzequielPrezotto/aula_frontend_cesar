@@ -1,42 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="conteudo">
-        <p>
-            <label for="nova-tarefa">Adicionar Tarefa</label>
-            <input id="nova-tarefa" type="text">
-            <button id="botao-adicionar">Adicionar</button>
-        </p>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+  </head>
 
-        <h3>Tarefas</h3>
-        <ul id="incompletas">
-            <li>
-                <input type="checkbox">
-                <label>Pagar as contas</label>
-                <button class="apagar">Apagar</button>
-            </li>
-            <li>
-                <input type="checkbox">
-                <label>Fazer as compras</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
-
-        <h3>Completas</h3>
-        <ul id="completas">
-            <li>
-                <input type="checkbox" checked="">
-                <label>Lavar a louça</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
-    </div>
-
-
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
