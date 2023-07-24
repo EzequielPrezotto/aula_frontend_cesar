@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <title>Lista de Tarefas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="dest/script.js" defer></script> 
 </head>
 <body>
+    
     <div class="conteudo">
+        <h2>Lista de tarefas</h2>
         <p>
             <label for="nova-tarefa">Adicionar Tarefa</label>
             <input id="nova-tarefa" type="text">
-            <button id="botao-adicionar">Adicionar</button>
+            <button id="botao-adicionar" onclick="addTask()">Adicionar</button>
         </p>
 
-        <h3>Tarefas</h3>
+        <h3>Fazer</h3>
         <ul id="incompletas">
             <li>
                 <input type="checkbox">
