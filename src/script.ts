@@ -19,23 +19,38 @@ function addTask() {
     };
 
     tarefas.push(task);
+    saveTasksToLocalStorage();
     mostrarLista();
     taskInput.value = "";
 }
 
 function rmTask(taskId: number) {
     tarefas = tarefas.filter((task) => task.id !== taskId);
+    saveTasksToLocalStorage();
     mostrarLista();
 }
 
 function toggleCompleted(taskId: number) {
     tarefas = tarefas.map((task) => {
         if (task.id === taskId) {
+            console.log(task.id)
             return { ...task, completa: !task.completa };
         }
         return task;
     });
+
+    saveTasksToLocalStorage();
     mostrarLista();
+}
+
+function saveTasksToLocalStorage() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+}
+
+function getTasksFromLocalStorage() {
+    const tasksData = localStorage.getItem("tarefas");
+    tarefas = tasksData ? JSON.parse(tasksData) : [];
+    contador = tarefas.length + 1
 }
 
 function mostrarLista() {
@@ -58,7 +73,8 @@ function mostrarLista() {
             tarefasIncompletas.appendChild(li);
         }
         
-    });
+    });  
 }
 
+getTasksFromLocalStorage();
 mostrarLista();
