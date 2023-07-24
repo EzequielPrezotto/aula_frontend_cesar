@@ -49,7 +49,7 @@ function mostrarLista() {
         const li = document.createElement("li");
         li.innerHTML = `
             <input type="checkbox" ${task.completa ? "checked" : ""} onchange="toggleCompleted(${task.id})">
-            <label>${task.tarefa_texto}</label>
+            <label> ${task.completa ? "<s>" : ""} ${task.tarefa_texto} ${task.completa ? "</s>" : ""}</label>
             <button onclick="rmTask(${task.id})"  class="apagar">Apagar</button>
         `;
         if (task.completa) {
