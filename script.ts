@@ -93,11 +93,16 @@ let editarTarefa = function () {
                 parent.replaceChild(campoEdicao, parent.children[1]);
 
                 parent.children[1].addEventListener('keypress', (event: KeyboardEvent) => {
-                    const campoEdicaoValue = (parent.children[1] as HTMLInputElement).value
+                    const campoEdicaoValue = (parent.children[1] as HTMLInputElement).value;
 
                     if (event.key === 'Enter' && validateTextoTarefa(campoEdicaoValue)) {
                         let label = document.createElement("label");
                         label.innerText = campoEdicaoValue;
+                        
+                        const tarefaIndex = listaTarefas.findIndex(t => t.id === +parent.id);
+                        listaTarefas[tarefaIndex].descricao = campoEdicaoValue;
+                        localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas))
+
                         parent.replaceChild(label, parent.children[1]); 
                     }
                 })               
@@ -113,15 +118,15 @@ let mudarStatusTarefa = function () {
                 const checkboxInput = event.target as HTMLInputElement;
                 const parentElement = checkboxInput.parentElement;
                 if (checkboxInput.checked) {
-                    // const tarefaIndex = listaTarefas.findIndex(t => t.id === +parentElement.id);
-                    // listaTarefas[tarefaIndex].status = true;
-                    // localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas))
+                    const tarefaIndex = listaTarefas.findIndex(t => t.id === +parentElement.id);
+                    listaTarefas[tarefaIndex].status = true;
+                    localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas))
                     parentElement.remove()
                     listaTarefasCompletas?.appendChild(parentElement);
                 } else {
-                    // const tarefaIndex = listaTarefas.findIndex(t => t.id === +parentElement.id);
-                    // listaTarefas[tarefaIndex].status = false;
-                    // localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas))
+                    const tarefaIndex = listaTarefas.findIndex(t => t.id === +parentElement.id);
+                    listaTarefas[tarefaIndex].status = false;
+                    localStorage.setItem('listaTarefas', JSON.stringify(listaTarefas))
                     parentElement.remove()
                     listaTarefasIncompletas?.appendChild(parentElement);
                 }
