@@ -23,12 +23,14 @@ const App: React.FC = () => {
   };
 
   const addTask = (): void => {
+    if (taskName.trim().length > 0) {
     const newTask = {
       name: taskName,
       completed: false
     };
     setTaskList([...taskList, newTask])
     setTaskName("")
+    }
   }
 
   function isNotCompleted(element: Task, index: number, array: Task[]) {
