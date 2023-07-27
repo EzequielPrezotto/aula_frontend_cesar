@@ -1,8 +1,6 @@
-// dado, quando, então.
 const tasksContainer = document.querySelector('.tarefas')!
 const inputTarefa: HTMLInputElement = document.querySelector("#nova-tarefa")!   
 function userInputVerify () {
-    // Given an input 
     if (inputTarefa.value.trim()){
         addTask();
     } else {
@@ -25,7 +23,6 @@ function addTask (){
     taskDelete.classList.add('task-delete-button');
     taskDelete.innerText = "Apagar";
     taskDelete.addEventListener('click', () => handleDeleteClick());
-
     //Botão editar
     const taskEdit = document.createElement('button');
     taskEdit.classList.add('task-edit-button');
