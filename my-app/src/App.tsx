@@ -27,6 +27,15 @@ const App: React.FC = () => {
     setTaskList(filteredTasks);
   };
 
+  const handleEditTask = (task: Task, newName: string) => {
+    const index = taskList.findIndex((t) => t.name === task.name);
+    if (index !== -1) {
+      const updatedTaskList = [...taskList];
+      updatedTaskList[index].name = newName;
+      setTaskList(updatedTaskList);
+    }
+  };
+
   const addTask = (): void => {
     if (taskName.trim().length > 0) {
     const newTask = {
@@ -69,13 +78,25 @@ const App: React.FC = () => {
         <div className='pending'>
           <h1>Pendentes</h1>
           {taskList.filter(isNotCompleted).map( (task: Task, key: number) => {
-            return <TaskItem key={key} task={task} onComplete={handleTaskStatus} onRemove={handleRemoveTask}/>
+            return <TaskItem 
+            key={key} 
+            task={task} 
+            onComplete={handleTaskStatus} 
+            onRemove={handleRemoveTask}
+            onEdit={handleEditTask} 
+            />
           })}
         </div>
         <div className='done'>
           <h1>Completas</h1>
           {taskList.filter(isCompleted).map( (task: Task, key: number) => {
-            return <TaskItem key={key} task={task} onComplete={handleTaskStatus} onRemove={handleRemoveTask}/>
+            return <TaskItem 
+            key={key} 
+            task={task} 
+            onComplete={handleTaskStatus} 
+            onRemove={handleRemoveTask}
+            onEdit={handleEditTask} 
+            />
           })}
         </div>
       </div>
