@@ -22,6 +22,20 @@ const App: React.FC = () => {
     setTaskList([...taskList, updatedTask])
   };
 
+  const handleRemoveTask = (task: Task): void => {
+    const filteredTasks = taskList.filter((t) => t.name !== task.name);
+    setTaskList(filteredTasks);
+  };
+
+  const handleEditTask = (task: Task, newName: string) => {
+    const index = taskList.findIndex((t) => t.name === task.name);
+    if (index !== -1) {
+      const updatedTaskList = [...taskList];
+      updatedTaskList[index].name = newName;
+      setTaskList(updatedTaskList);
+    }
+  };
+
   const addTask = (): void => {
     if (taskName.trim().length > 0) {
       const newTask = {
@@ -32,6 +46,15 @@ const App: React.FC = () => {
       setTaskName("")
     }
   }
+
+  const removeTask = (task: Task): void => {
+    const index = taskList.indexOf(task);
+    if (index !== -1) {
+      const updatedTaskList = [...taskList];
+      updatedTaskList.splice(index, 1);
+      setTaskList(updatedTaskList);
+    }
+  };
 
   function isNotCompleted(element: Task, index: number, array: Task[]) {
     return (element.completed == false)
@@ -55,13 +78,25 @@ const App: React.FC = () => {
         <div className='pending'>
           <h1>Pendentes</h1>
           {taskList.filter(isNotCompleted).map( (task: Task, key: number) => {
-            return <TaskItem key={key} task={task} onComplete={handleTaskStatus}/>
+            return <TaskItem 
+            key={key} 
+            task={task} 
+            onComplete={handleTaskStatus} 
+            onRemove={handleRemoveTask}
+            onEdit={handleEditTask} 
+            />
           })}
         </div>
         <div className='done'>
           <h1>Completas</h1>
           {taskList.filter(isCompleted).map( (task: Task, key: number) => {
-            return <TaskItem key={key} task={task} onComplete={handleTaskStatus}/>
+            return <TaskItem 
+            key={key} 
+            task={task} 
+            onComplete={handleTaskStatus} 
+            onRemove={handleRemoveTask}
+            onEdit={handleEditTask} 
+            />
           })}
         </div>
       </div>
