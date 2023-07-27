@@ -42,56 +42,65 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
   };
 
   return (
-    <li className="flex items-center gap-2 py-1">
-      <Checkbox
-        checked={item.completed}
-        onChange={(value) => onEdit(item.id, { completed: value })}
-      />
+    <li>
+      <form className="flex items-center gap-2 py-1">
+        <Checkbox
+          checked={item.completed}
+          onChange={(value) => onEdit(item.id, { completed: value })}
+        />
 
-      <EditableTextInput
-        value={newContent}
-        onChange={setNewContent}
-        isEditing={isEditing}
-      />
+        <EditableTextInput
+          value={newContent}
+          onChange={setNewContent}
+          isEditing={isEditing}
+        />
 
-      {isEditing ? (
-        <>
-          <Button
-            title="Cancel editing"
-            className={classnames("ml-auto bg-red-600")}
-            onClick={handleCancelEditing}
-          >
-            <RxCross2 />
-          </Button>
+        {isEditing ? (
+          <>
+            <Button
+              type="button"
+              title="Cancel editing"
+              className={classnames("ml-auto bg-red-600")}
+              onClick={handleCancelEditing}
+            >
+              <RxCross2 />
+            </Button>
 
-          <Button
-            title="Save"
-            className={classnames("bg-green-600")}
-            onClick={handleSave}
-            disabled={isEditing && newContent.trim() === ""}
-          >
-            <RxCheck />
-          </Button>
-        </>
-      ) : (
-        <>
-          <Button
-            title="Start editing"
-            className={classnames("ml-auto bg-indigo-600")}
-            onClick={handleStartEditing}
-          >
-            <RxPencil2 />
-          </Button>
+            <Button
+              type="submit"
+              title="Save"
+              className={classnames("bg-green-600")}
+              onClick={(event) => {
+                event.preventDefault();
+                handleSave();
+              }}
+              disabled={isEditing && newContent.trim() === ""}
+            >
+              <RxCheck />
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              type="button"
+              title="Start editing"
+              className={classnames("ml-auto bg-indigo-600")}
+              onClick={handleStartEditing}
+            >
+              <RxPencil2 />
+            </Button>
 
-          <Button
-            title="Delete"
-            className={classnames("bg-red-600")}
-            onClick={handleDelete}
-          >
-            <RxTrash />
-          </Button>
-        </>
-      )}
+            <Button
+              type="button"
+              title="Delete"
+              className={classnames("bg-red-600")}
+              onClick={handleDelete}
+            >
+              <RxTrash />
+            </Button>
+          </>
+        )}
+      </form>
     </li>
   );
 }

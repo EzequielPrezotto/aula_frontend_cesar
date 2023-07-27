@@ -4,7 +4,6 @@ type TextInputPrimitiveProps = React.ComponentPropsWithoutRef<"input">;
 type OmittedProps = "onChange";
 
 interface Props extends Omit<TextInputPrimitiveProps, OmittedProps> {
-  className?: string;
   onChange: (value: string) => void;
 }
 

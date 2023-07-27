@@ -81,7 +81,7 @@ export function App() {
       <section className="flex flex-col gap-4">
         <h3 className="border-b border-gray-700">Add task</h3>
 
-        <div className="flex gap-2">
+        <form className="flex gap-2">
           <TextInput
             placeholder="New note"
             value={newContent}
@@ -89,13 +89,18 @@ export function App() {
           />
 
           <Button
+            type="submit"
+            title="Add task"
             className="bg-blue-800"
             disabled={newContent.trim().length === 0}
-            onClick={handleSubmit}
+            onClick={(event) => {
+              event.preventDefault();
+              handleSubmit();
+            }}
           >
             Add
           </Button>
-        </div>
+        </form>
       </section>
 
       <section className="flex flex-col">
