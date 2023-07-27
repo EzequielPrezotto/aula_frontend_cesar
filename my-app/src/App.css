@@ -45,4 +45,9 @@ body {
 .todoList {
   flex: 70%;
   width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  padding-top: 50px;
 }

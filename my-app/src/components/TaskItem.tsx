@@ -1,5 +1,6 @@
 import React from "react";
-import { Task } from '../interfaces/Task'
+import { Task } from '../interfaces/Task';
+import './TaskItem.css';
 
 interface Props {
     task: Task;
@@ -7,7 +8,7 @@ interface Props {
 
 const TaskItem = ({ task }: Props) => {
     return (
-        <div className="task">
+        <div className="TaskItem">
             <button>X</button>
             <span>{task.name}</span>
         </div>

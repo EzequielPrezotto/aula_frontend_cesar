@@ -1,0 +1,18 @@
+.TaskItem {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 20%;
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.TaskItem span {
+    padding-left: 5px;
+}
+
+.TaskItem button {
+    height: 60px;
+    width: 40px;
+}
