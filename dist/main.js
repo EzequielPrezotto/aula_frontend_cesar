@@ -1,9 +1,7 @@
 "use strict";
-// dado, quando, então.
 const tasksContainer = document.querySelector('.tarefas');
 const inputTarefa = document.querySelector("#nova-tarefa");
 function userInputVerify() {
-    // Given an input 
     if (inputTarefa.value.trim()) {
         addTask();
     }
