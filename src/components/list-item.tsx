@@ -53,6 +53,7 @@ export function ListItem({ item, onEdit, onDelete }: Props) {
           value={newContent}
           onChange={setNewContent}
           isEditing={isEditing}
+          completed={item.completed}
         />
 
         {isEditing ? (
