@@ -15,6 +15,6 @@ export function EditableTextInput({ value, isEditing, onChange, completed }: Pro
   }
 
   return (
-    <span className={(completed ? 'line-through' : '')}>{value}</span>
+    <span className={(completed ? 'line-through decoration-gray-400 decoration-2' : '')}>{value}</span>
   );
 }
