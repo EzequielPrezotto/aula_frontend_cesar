@@ -77,7 +77,7 @@ export function App() {
     ));
 
   return (
-    <main className="container mx-auto flex w-[700px] flex-col gap-2 p-5">
+    <main className="container mx-auto flex max-w-[700px] flex-col gap-2 p-5">
       <section className="flex flex-col gap-4">
         <h3 className="border-b border-gray-700">Add task</h3>
 
