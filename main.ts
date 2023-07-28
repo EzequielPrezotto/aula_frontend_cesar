@@ -18,11 +18,13 @@ function addTask (){
     //Texto
     const taskContent = document.createElement('p');
     taskContent.innerText = inputTarefa.value;
+    
     //Botão apagar 
     const taskDelete = document.createElement('button');
     taskDelete.classList.add('task-delete-button');
     taskDelete.innerText = "Apagar";
-    taskDelete.addEventListener('click', () => handleDeleteClick());
+    taskDelete.addEventListener('click', (event) => handleDeleteClick(event));
+
     //Botão editar
     const taskEdit = document.createElement('button');
     taskEdit.classList.add('task-edit-button');
@@ -54,6 +56,7 @@ const handleClick = (taskCheckbox) => {
 }
 
 
-const handleDeleteClick = () => {
-
+const handleDeleteClick = (task) => {
+   console.log(task);
+    
 }
