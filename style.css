@@ -107,3 +107,8 @@ button#botao-adicionar {
     background-color: transparent;
     border: none;
 }
+
+.input-text-disabled {
+    background-color: transparent;
+    border: none;
+}
