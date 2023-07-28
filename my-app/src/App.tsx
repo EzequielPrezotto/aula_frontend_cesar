@@ -35,18 +35,21 @@ const App: React.FC = () => {
 
   const handleRemoveTask = (task: Task): void => {
     const filteredTasks = taskList.filter((t) => t.name !== task.name);
-    localStorage.setItem("taskList", JSON.stringify(filteredTasks));
-    setTaskList(filteredTasks);
+    updateTaskList(filteredTasks)
   };
 
   const handleEditTask = (task: Task, newName: string) => {
-    const index = taskList.findIndex((t) => t.name === task.name);
-    if (index !== -1) {
-      const updatedTaskList = [...taskList];
-      updatedTaskList[index].name = newName;
-      
-      updateTaskList(updatedTaskList);
-    }
+    const updatedTaskList = taskList.map((outdatedTask) => {
+      if (outdatedTask.name === task.name) {
+        return {
+          name: newName,
+          completed: task.completed
+        };
+      }
+      return outdatedTask;
+    });
+    
+    updateTaskList(updatedTaskList);
   };
 
   const addTask = (): void => {
