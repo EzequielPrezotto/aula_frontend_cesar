@@ -16,8 +16,9 @@ const TaskItem = ({ task, onComplete, onRemove, onEdit }: Props) => {
     const [editedName, setEditedName] = useState(task.name);
 
     const handleOnChange = () => {
-        setIsChecked(!isChecked);
-        onComplete(task)
+      task.completed = !task.completed;
+      setIsChecked(!isChecked);
+      onComplete(task)
     };
 
     const handleRemove = () => {

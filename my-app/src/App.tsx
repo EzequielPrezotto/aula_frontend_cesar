@@ -17,15 +17,14 @@ const App: React.FC = () => {
     setTaskName(event.target.value)
   };
 
-  const handleTaskStatus = (task: Task) => {
-    const index = taskList.indexOf(task)
-    const updatedTask = {
-      name: taskList[index].name,
-      completed: !taskList[index].completed
-    };
-    taskList.splice(index, 1)
+  const handleTaskStatus = (updatedTask: Task) => {
+    const updatedTaskList = taskList.map((outdatedTask, index) => {
+      if (outdatedTask.name == updatedTask.name) {
+        return updatedTask
+      }
+      return outdatedTask
+    });
 
-    const updatedTaskList = [...taskList, updatedTask]
     localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
     setTaskList(updatedTaskList)
   };
