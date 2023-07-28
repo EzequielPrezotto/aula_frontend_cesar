@@ -5,7 +5,7 @@ import TaskItem from './components/TaskItem';
 
 const loadTaskList = (): Task[] => {
   const data = localStorage.getItem("taskList")
-  return JSON.parse(data || "")
+  return JSON.parse(data || "[]")
 }
 
 const App: React.FC = () => {
