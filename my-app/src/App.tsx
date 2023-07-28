@@ -75,15 +75,6 @@ const App: React.FC = () => {
     }
   };
 
-  function isNotCompleted(element: Task, index: number, array: Task[]) {
-    return (element.completed == false)
-  }
-
-  function isCompleted(element: Task, index: number, array: Task[]) {
-    console.log(element)
-    return (element.completed == true)
-  }
-
   return (
     <div className="App">
       <div className='header'>
@@ -96,7 +87,7 @@ const App: React.FC = () => {
       <div className='todoList'>
         <div className='pending'>
           <h1>Pendentes</h1>
-          {taskList.filter(isNotCompleted).map( (task: Task, key: number) => {
+          {taskList.filter((t) => t.completed === false).map( (task: Task, key: number) => {
             return <TaskItem 
             key={key} 
             task={task} 
@@ -108,7 +99,7 @@ const App: React.FC = () => {
         </div>
         <div className='done'>
           <h1>Completas</h1>
-          {taskList.filter(isCompleted).map( (task: Task, key: number) => {
+          {taskList.filter((t) => t.completed === true).map( (task: Task, key: number) => {
             return <TaskItem 
             key={key} 
             task={task} 
