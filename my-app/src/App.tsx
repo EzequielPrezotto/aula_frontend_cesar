@@ -17,16 +17,20 @@ const App: React.FC = () => {
     setTaskName(event.target.value)
   };
 
+  const updateTaskList = (updatedTaskList: Task[]) => {
+    localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
+    setTaskList(updatedTaskList)
+  }
+
   const handleTaskStatus = (updatedTask: Task) => {
-    const updatedTaskList = taskList.map((outdatedTask, index) => {
+    const updatedTaskList = taskList.map((outdatedTask) => {
       if (outdatedTask.name == updatedTask.name) {
         return updatedTask
       }
       return outdatedTask
     });
 
-    localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
-    setTaskList(updatedTaskList)
+    updateTaskList(updatedTaskList);
   };
 
   const handleRemoveTask = (task: Task): void => {
@@ -40,8 +44,8 @@ const App: React.FC = () => {
     if (index !== -1) {
       const updatedTaskList = [...taskList];
       updatedTaskList[index].name = newName;
-      setTaskList(updatedTaskList);
-      localStorage.setItem("taskList", JSON.stringify(taskList));
+      
+      updateTaskList(updatedTaskList);
     }
   };
 
@@ -52,9 +56,9 @@ const App: React.FC = () => {
         completed: false
       };
       const updatedTaskList = [...taskList, newTask]
-      localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
-      setTaskList(updatedTaskList)
+      
       setTaskName("")
+      updateTaskList(updatedTaskList);
     }
   }
 
@@ -63,8 +67,8 @@ const App: React.FC = () => {
     if (index !== -1) {
       const updatedTaskList = [...taskList];
       updatedTaskList.splice(index, 1);
-      setTaskList(updatedTaskList);
-      localStorage.setItem("taskList", JSON.stringify(taskList));
+      
+      updateTaskList(updatedTaskList);
     }
   };
 
