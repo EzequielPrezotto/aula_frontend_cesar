@@ -3,10 +3,15 @@ import './App.css';
 import { Task } from './interfaces/Task'
 import TaskItem from './components/TaskItem';
 
+const loadTaskList = (): Task[] => {
+  const data = localStorage.getItem("taskList")
+  return JSON.parse(data || "")
+}
+
 const App: React.FC = () => {
 
   const [taskName, setTaskName] = useState<string>("");
-  const [taskList, setTaskList] = useState<Task[]>([]);
+  const [taskList, setTaskList] = useState<Task[]>(() => loadTaskList());
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setTaskName(event.target.value)
@@ -19,11 +24,15 @@ const App: React.FC = () => {
       completed: !taskList[index].completed
     };
     taskList.splice(index, 1)
-    setTaskList([...taskList, updatedTask])
+
+    const updatedTaskList = [...taskList, updatedTask]
+    localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
+    setTaskList(updatedTaskList)
   };
 
   const handleRemoveTask = (task: Task): void => {
     const filteredTasks = taskList.filter((t) => t.name !== task.name);
+    localStorage.setItem("taskList", JSON.stringify(filteredTasks));
     setTaskList(filteredTasks);
   };
 
@@ -33,6 +42,7 @@ const App: React.FC = () => {
       const updatedTaskList = [...taskList];
       updatedTaskList[index].name = newName;
       setTaskList(updatedTaskList);
+      localStorage.setItem("taskList", JSON.stringify(taskList));
     }
   };
 
@@ -42,7 +52,9 @@ const App: React.FC = () => {
         name: taskName,
         completed: false
       };
-      setTaskList([...taskList, newTask])
+      const updatedTaskList = [...taskList, newTask]
+      localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
+      setTaskList(updatedTaskList)
       setTaskName("")
     }
   }
@@ -53,6 +65,7 @@ const App: React.FC = () => {
       const updatedTaskList = [...taskList];
       updatedTaskList.splice(index, 1);
       setTaskList(updatedTaskList);
+      localStorage.setItem("taskList", JSON.stringify(taskList));
     }
   };
 
