@@ -1,0 +1,54 @@
+.App {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header {
+  flex: 30%;
+  background-color: olive;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header input {
+  width: 200px;
+  height: 40px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  padding-left: 10px;
+  font-size: large;
+  border: 1px solid gray;
+}
+
+.header button {
+  width: 60px;
+  height: 44px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-right: 10px;
+  font-size: large;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.todoList {
+  flex: 70%;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  padding-top: 50px;
+}
