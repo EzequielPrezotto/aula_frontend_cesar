@@ -1,27 +1,32 @@
-.conteudo {
-    margin: 100px auto 0;
-    width: 400px;
-}
-ul {
+* {
     margin: 0;
     padding: 0;
-}
-li * {
-    float: left;
-}
-input, button {
-    outline: none;
-}
-button {
-    background: none;
-    border: 0px;
-    color: #888;
-    font-size: 15px;
-    width: 60px;
-    margin: 10px 0 0;
-    cursor: pointer;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+body{
+    height: 100vh;
+    background-color: #397197;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conteudo {
+    margin: 100px auto 0;
+    width: 40%;
+    border: 2px solid #fff;
+    padding: 30px 20px;
+    min-width: 500px;
+}
+.adicionar-tarefa{
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    /* display: flex; */
+}
 h3,
 label[for='nova-tarefa'] {
     color: #333;
@@ -32,53 +37,78 @@ label[for='nova-tarefa'] {
     margin: 0;
     text-transform: uppercase;
 }
-input[type="text"] {
-    margin: 0;
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 6px;
-    font-family: Lato, sans-serif;
-    color: #888;
-}
-input[type="text"]:focus {
-    color: #333;
-}
-
 label[for='nova-tarefa'] {
     display: block;
     margin: 0 0 20px;
 }
-input#nova-tarefa {
-    float: left;
-    width: 318px;
+.input-task-name {
+    flex: 3;
+    font-size: 16px;
+    border: 2px solid #d1d3d4;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: 500;
+}
+.input-task-name[type="text"]:focus {
+    /* color: #333; */
+    outline: none;
+    border-color: #397197;
+}
+button#botao-adicionar {
+    flex: 1;
+    border-radius: 5px;
+    font-weight: 500;
+    /* height: 100%; */
+    font-size: 16px;
+    border: none;
+    background-color: #397197 ;
+    color: #fff;
+    padding: 12px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+ .tarefas{
+    background-color: #fff;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    
 }
 
-li {
-    overflow: hidden;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
+.tarefas-completas{
+    background-color: #fff;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+
 }
-li > input[type="checkbox"] {
-    margin: 0 10px;
-    position: relative;
-    top: 15px;
-}
-li > label {
-    font-size: 18px;
-    line-height: 40px;
-    width: 237px;
-    padding: 0 0 0 11px;
-}
-li >  input[type="text"] {
-    width: 226px;
+/* Coisas criadas a partir do ts */
+.task-item{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 6px;
+   margin-top: 6px 
 }
 
-#completed-tasks label {
-    text-decoration: line-through;
-    color: #888;
+.task-delete-button, .task-edit-button{
+    background-color: #397197;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    justify-items: right;
 }
 
+.input-text-disabled {
+    background-color: transparent;
+    border: none;
+}
+
+.input-text-disabled {
+    background-color: transparent;
+    border: none;
+}

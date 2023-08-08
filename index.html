@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="conteudo">
+      <div class="adicionar-tarefa">
         <p>
-            <label for="nova-tarefa">Adicionar Tarefa</label>
-            <input id="nova-tarefa" type="text">
-            <button id="botao-adicionar">Adicionar</button>
+          <label for="nova-tarefa">Adicionar Tarefa</label>
+          <input id="nova-tarefa" type="text" class="input-task-name" placeholder="Nova atividade" />
+          <button id="botao-adicionar" onclick="userInputVerify()">
+            Adicionar
+          </button>
         </p>
-
+      </div>
+      <div class="tarefas">
         <h3>Tarefas</h3>
-        <ul id="incompletas">
-            <li>
-                <input type="checkbox">
-                <label>Pagar as contas</label>
-                <button class="apagar">Apagar</button>
-            </li>
-            <li>
-                <input type="checkbox">
-                <label>Fazer as compras</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
-
+        <ul id="incompletas"></ul>
+      </div>
+      <div class="tarefas-completas">
         <h3>Completas</h3>
-        <ul id="completas">
-            <li>
-                <input type="checkbox" checked="">
-                <label>Lavar a louça</label>
-                <button class="apagar">Apagar</button>
-            </li>
-        </ul>
+        <ul id="completas"></ul>
+      </div>
     </div>
 
-
-</body>
+    <script src="./dist/main.js"></script>
+  </body>
 </html>
