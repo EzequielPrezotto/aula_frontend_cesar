@@ -10,6 +10,7 @@ import type { TodoItemEditType, TodoItem } from "@/types/todo-item";
 export function App() {
   const [data, setData] = useState<TodoItem[]>(() => loadListData());
   const [newContent, setNewContent] = useState("");
+  const [filterQuery, setFilterQuery] = useState("");
 
   const handleSubmit = () => {
     if (newContent.trim() === "") {
@@ -54,16 +55,20 @@ export function App() {
     });
   };
 
-  const incompleteTasks = data
+  const filteredIncompleteData = data
     .filter((item) => !item.completed)
-    .map((item) => (
-      <ListItem
-        key={item.id}
-        item={item}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
-    ));
+    .filter((item) =>
+      item.content.toLowerCase().includes(filterQuery.toLowerCase()),
+    );
+
+  const incompleteTasks = filteredIncompleteData.map((item) => (
+    <ListItem
+      key={item.id}
+      item={item}
+      onEdit={handleEdit}
+      onDelete={handleDelete}
+    />
+  ));
 
   const completedTasks = data
     .filter((item) => item.completed)
@@ -106,13 +111,23 @@ export function App() {
       <section className="flex flex-col">
         <h3 className="border-b border-gray-700">Tasks</h3>
 
-        <ul className="divide-y divide-gray-700 px-5">{incompleteTasks}</ul>
+        <div className="mt-2 px-5">
+          <TextInput
+            placeholder="Search..."
+            value={filterQuery}
+            onChange={setFilterQuery}
+          />
+
+          <ul className="divide-y divide-gray-700">{incompleteTasks}</ul>
+        </div>
       </section>
 
       <section className="flex flex-col">
         <h3 className="border-b border-gray-700">Completed</h3>
 
-        <ul className="divide-y divide-gray-700 px-5">{completedTasks}</ul>
+        <div className="px-5">
+          <ul className="divide-y divide-gray-700">{completedTasks}</ul>
+        </div>
       </section>
     </main>
   );
